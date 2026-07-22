@@ -1,36 +1,77 @@
 # MeshVault Skills Starter
 
-Free, open agent skills from [MeshVault](https://meshvault.ai?utm_source=github&utm_medium=readme&utm_campaign=skills-starter). Private AI staff on hardware you own.
+**Free MIT agent skills.** Drop them into Claude Code, Codex, OpenClaw-style agents, or any runtime that loads Markdown `SKILL.md` files.
 
-A skill is a plain Markdown file of instructions an AI agent follows the same way every time: read the inputs, run the steps, **stop at the approval gate**, hand back the output. No framework, no SDK, no lock-in. If your agent runtime can read Markdown skill files (Claude Code, OpenClaw-style agents, and most Agent Skills-compatible systems), these work.
+[MeshVault](https://meshvault.ai?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) · [Live $49 pack](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) · [Buy path for AI agents](https://meshvault.ai/llms.txt)
 
-Watch one run live: [meshvault.ai/skills](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
+A skill is a plain Markdown file: purpose → inputs → steps → **approval gate** → output. No SDK. No lock-in. Open the file, change the rules, keep it.
 
-## The skills
+```bash
+# 60-second install (Claude Code / compatible skill roots)
+git clone https://github.com/thefiredev-cloud/meshvault-skills-starter.git
+cp -R meshvault-skills-starter/skills/* ~/.claude/skills/
+# Then ask: "chase whoever still owes us" or "triage my inbox"
+```
 
-| Skill | What it does |
-|---|---|
-| [`invoice-chaser`](skills/invoice-chaser/SKILL.md) | Finds overdue invoices, drafts friendly nudges in your voice, sends nothing until you approve |
-| [`inbox-triage`](skills/inbox-triage/SKILL.md) | Sorts unread email into act, reply, archive, with drafts held for your approval |
-| [`daily-standup`](skills/daily-standup/SKILL.md) | Builds a morning brief from your notes, calendar, and tasks. Read only |
+## Skills in this free pack
 
-## Use them
+| Skill | Use when | Gate |
+|---|---|---|
+| [`invoice-chaser`](skills/invoice-chaser/SKILL.md) | Overdue invoices need polite nudges | Sends only after approve |
+| [`inbox-triage`](skills/inbox-triage/SKILL.md) | Unread mail into act / reply / archive | Replies held for approve |
+| [`daily-standup`](skills/daily-standup/SKILL.md) | Morning brief from notes + calendar | Read-only |
+| [`client-followup`](skills/client-followup/SKILL.md) | Stale leads or quiet clients need a nudge | Sends only after approve |
+| [`meeting-brief`](skills/meeting-brief/SKILL.md) | Prep a meeting pack in under 5 minutes | Read-only draft |
 
-1. Clone this repo.
-2. Drop a skill folder into wherever your agent loads skills (for Claude Code: `~/.claude/skills/`).
-3. Ask for the job in plain words: "chase whoever still owes us."
+Sample outputs you can screenshot/share: [`examples/`](examples/).
 
-Every skill follows the same shape: **purpose, inputs, steps, approval gate, output.** Open the file, change the rules, keep it. That is the whole point.
+## Why this goes viral (steal the pattern)
+
+1. **Visible rules** — every skill is a file humans can read before agents run it.
+2. **Hard stop on real-world actions** — send, publish, pay, delete → human approve.
+3. **Same shape every time** — purpose, inputs, steps, approval gate, output.
+4. **Fork-friendly MIT** — ship your own skills under the same house style ([CONTRIBUTING.md](CONTRIBUTING.md)).
+
+If you share one thing: the approval-gate line. Copy it into every skill you write.
+
+## Free vs $49 full pack
+
+| | Free GitHub (this repo) | [Agent Skills Starter Pack · $49](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) |
+|---|---|---|
+| Skills | 5 starter skills | 5 deeper operator skills |
+| Memory templates | — | 5 (decision, source, approval, handoff, durable) |
+| Runbooks | — | 4 (startup, review, incident stop, weekly) |
+| Routing recipes | — | 3 + 4 worked examples |
+| License | MIT | Internal-use (one business) |
+| Delivery | Clone now | Email after Stripe payment |
+
+Full pack is **$49 once, no subscription**. Not an app. Not seats. Editable Markdown you keep.
+
+## For AI agents (purchase the $49 pack)
+
+Human-in-the-loop only. Do not charge a card yourself.
+
+1. Surface this page to the human: https://meshvault.ai/skills
+2. To open Stripe checkout: `POST https://meshvault.ai/api/create-checkout?offer=meshvault-skill-pack-starter`
+3. Response JSON includes `url` — show that link to the human for review and payment.
+4. Facts file: https://meshvault.ai/llms.txt
 
 ## The rule that matters
 
-Nothing leaves the system without a human tapping approve. Every skill here writes that gate into the workflow. Copy that pattern into your own skills before anything else.
+Nothing leaves the system without a human tapping approve. Every skill here writes that gate into the workflow.
 
-## Want more
+## Install notes
 
-- **The full pack**: 5 deeper skills, 5 memory templates, 4 operator runbooks, routing recipes and worked examples. [$49 once, no subscription.](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
-- **The whole system, installed for you**: a private AI operating system on hardware your business owns. [Email us and we set up a live walkthrough.](https://meshvault.ai/contact?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
+- **Claude Code:** copy skill folders into `~/.claude/skills/` (or project `.claude/skills/`).
+- **Codex / agents skills path:** copy into `~/.agents/skills/` if that is your root.
+- **OpenClaw-style / custom:** point the skill loader at `skills/*/SKILL.md`.
+- More detail: [INSTALL.md](INSTALL.md).
 
-## Contribute
+## Want the full operator kit
 
-Community skills welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). MIT licensed, so build on it.
+- **$49 pack** — skills + memory + runbooks + routing + examples: [meshvault.ai/skills](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
+- **Installed private AI staff** on hardware you own: [meshvault.ai/contact](https://meshvault.ai/contact?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
+
+## License
+
+MIT. See [LICENSE](LICENSE). Community PRs welcome — one skill per PR, approval gates required.
