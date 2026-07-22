@@ -1,6 +1,10 @@
 # MeshVault Skills Starter
 
-**Free MIT agent skills.** Drop them into Claude Code, Codex, OpenClaw-style agents, or any runtime that loads Markdown `SKILL.md` files.
+[![validate skills](https://github.com/thefiredev-cloud/meshvault-skills-starter/actions/workflows/validate.yml/badge.svg)](https://github.com/thefiredev-cloud/meshvault-skills-starter/actions/workflows/validate.yml)
+
+![A MeshVault skill running: invoice-chaser reads invoices, drafts nudges, and stops at the approval gate](docs/skill-demo.png)
+
+**Free MIT agent skills.** Drop them into Claude Code, Codex, OpenClaw-style agents, or any runtime that loads Markdown `SKILL.md` files. OpenClaw-style agents load these as-is: point the skill loader at `skills/*/SKILL.md`.
 
 [MeshVault](https://meshvault.ai?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) · [Live $49 pack](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) · [Buy path for AI agents](https://meshvault.ai/llms.txt)
 

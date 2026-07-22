@@ -1,0 +1,20 @@
+name: validate skills
+on:
+  push: {branches: [main]}
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: every skill has frontmatter, an approval gate section, and MIT license
+        run: |
+          set -e
+          fail=0
+          for f in skills/*/SKILL.md; do
+            for key in "name:" "description:" "license: MIT"; do
+              grep -q "$key" "$f" || { echo "MISSING $key in $f"; fail=1; }
+            done
+            grep -qi "## Approval Gate" "$f" || { echo "MISSING approval gate section in $f"; fail=1; }
+          done
+          exit $fail
