@@ -26,6 +26,7 @@ cp -R meshvault-skills-starter/skills/* ~/.claude/skills/
 | [`daily-standup`](skills/daily-standup/SKILL.md) | Morning brief from notes + calendar | Read-only |
 | [`client-followup`](skills/client-followup/SKILL.md) | Stale leads or quiet clients need a nudge | Sends only after approve |
 | [`meeting-brief`](skills/meeting-brief/SKILL.md) | Prep a meeting pack in under 5 minutes | Read-only draft |
+| [`agents-on-device`](skills/agents-on-device/SKILL.md) | Put a gated agent on hardware you already own | Stops before send / pay / post / delete |
 
 Sample outputs you can screenshot/share: [`examples/`](examples/).
 
@@ -42,7 +43,7 @@ If you copy one thing, copy the approval gate. Copy it into every skill you writ
 
 | | Free GitHub (this repo) | [Agent Skills Starter Pack · $49](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) |
 |---|---|---|
-| Skills | 5 starter skills | 5 deeper operator skills |
+| Skills | 6 starter skills | 5 deeper operator skills |
 | Memory templates |: | 5 (decision, source, approval, handoff, durable) |
 | Runbooks |: | 4 (startup, review, incident stop, weekly) |
 | Routing recipes |: | 3 + 4 worked examples |
@@ -74,6 +75,7 @@ Nothing leaves the system without a human tapping approve. Every skill here writ
 ## Want the full operator kit
 
 - **$49 pack**: skills + memory + runbooks + routing + examples: [meshvault.ai/skills](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
+- **Clarity Operator Kit $199** for operators in the H.R. 3633 window → [meshvault.ai/clarity](https://meshvault.ai/clarity)
 - **Installed private AI staff** on hardware you own: [meshvault.ai/contact](https://meshvault.ai/contact?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
 
 ## License

@@ -11,6 +11,7 @@ MIT sample agent skills (Markdown `SKILL.md`). Not the paid product. Not an app.
 - `skills/daily-standup`
 - `skills/client-followup`
 - `skills/meeting-brief`
+- `skills/agents-on-device`
 
 Install: copy folders into the host skill root (`~/.claude/skills/`, `~/.agents/skills/`, or project equivalent).
 
