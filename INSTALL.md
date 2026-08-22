@@ -14,6 +14,7 @@ Restart or start a new session. Ask in plain words:
 - "Daily standup brief"
 - "Draft follow-ups for quiet clients"
 - "Prep me for the 2pm call"
+- "Put a gated agent on this machine"
 
 ## Project-scoped install
 
@@ -38,4 +39,5 @@ Open any `SKILL.md`. Confirm you see **Approval Gate**. If a skill can send, pub
 
 ## Next
 
-Free samples stop at these five skills. Full operator kit (memory templates, runbooks, routing, worked examples): **$49 once** → https://meshvault.ai/skills
+Free samples stop at the MIT skills in this repo. Full operator kit (memory templates, runbooks, routing, worked examples): **$49 once** → https://meshvault.ai/skills
+Clarity Operator Kit $199 for operators in the H.R. 3633 window → https://meshvault.ai/clarity
