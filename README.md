@@ -14,7 +14,7 @@ A skill is a plain Markdown file: purpose → inputs → steps → **approval ga
 # 60-second install (Claude Code / compatible skill roots)
 git clone https://github.com/thefiredev-cloud/meshvault-skills-starter.git
 cp -R meshvault-skills-starter/skills/* ~/.claude/skills/
-# Then ask: "chase whoever still owes us" or "triage my inbox"
+# Then ask: "chase whoever still owes us", "triage my inbox", or "sort these receipts"
 ```
 
 ## Skills in this free pack
@@ -22,6 +22,7 @@ cp -R meshvault-skills-starter/skills/* ~/.claude/skills/
 | Skill | Use when | Gate |
 |---|---|---|
 | [`invoice-chaser`](skills/invoice-chaser/SKILL.md) | Overdue invoices need polite nudges | Sends only after approve |
+| [`receipt-organizer`](skills/receipt-organizer/SKILL.md) | Draft a filing and spreadsheet plan from receipts | Moves and row edits only after approve |
 | [`inbox-triage`](skills/inbox-triage/SKILL.md) | Unread mail into act / reply / archive | Replies held for approve |
 | [`daily-standup`](skills/daily-standup/SKILL.md) | Morning brief from notes + calendar | Read-only |
 | [`client-followup`](skills/client-followup/SKILL.md) | Stale leads or quiet clients need a nudge | Sends only after approve |
@@ -43,7 +44,7 @@ If you copy one thing, copy the approval gate. Copy it into every skill you writ
 
 | | Free GitHub (this repo) | [Agent Skills Starter Pack · $49](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) |
 |---|---|---|
-| Skills | 6 starter skills | 5 deeper operator skills |
+| Skills | 7 starter skills | 5 deeper operator skills |
 | Memory templates |: | 5 (decision, source, approval, handoff, durable) |
 | Runbooks |: | 4 (startup, review, incident stop, weekly) |
 | Routing recipes |: | 3 + 4 worked examples |
