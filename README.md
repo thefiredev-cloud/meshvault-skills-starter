@@ -14,7 +14,7 @@ A skill is a plain Markdown file: purpose → inputs → steps → **approval ga
 # 60-second install (Claude Code / compatible skill roots)
 git clone https://github.com/thefiredev-cloud/meshvault-skills-starter.git
 cp -R meshvault-skills-starter/skills/* ~/.claude/skills/
-# Then ask: "chase whoever still owes us", "triage my inbox", or "give me the weekly pulse from these approved files"
+# Then ask: "chase whoever still owes us", "triage my inbox", "draft a quote from the approved price list", or "give me the weekly pulse from these approved files"
 ```
 
 ## Skills in this free pack
@@ -22,6 +22,7 @@ cp -R meshvault-skills-starter/skills/* ~/.claude/skills/
 | Skill | Use when | Gate |
 |---|---|---|
 | [`invoice-chaser`](skills/invoice-chaser/SKILL.md) | Overdue invoices need polite nudges | Sends only after approve |
+| [`quote-builder`](skills/quote-builder/SKILL.md) | Turn a request and approved price list into a quote draft | Draft only; never sends |
 | [`inbox-triage`](skills/inbox-triage/SKILL.md) | Unread mail into act / reply / archive | Replies held for approve |
 | [`daily-standup`](skills/daily-standup/SKILL.md) | Morning brief from notes + calendar | Read-only |
 | [`weekly-pulse`](skills/weekly-pulse/SKILL.md) | Summarize this week's numbers from approved files | Five-line draft; private by default |
