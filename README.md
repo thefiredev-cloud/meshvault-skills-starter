@@ -46,10 +46,10 @@ If you copy one thing, copy the approval gate. Copy it into every skill you writ
 
 | | Free GitHub (this repo) | [Agent Skills Starter Pack · $49](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) |
 |---|---|---|
-| Skills | 7 starter skills | 5 deeper operator skills |
-| Memory templates |: | 5 (decision, source, approval, handoff, durable) |
-| Runbooks |: | 4 (startup, review, incident stop, weekly) |
-| Routing recipes |: | 3 + 4 worked examples |
+| Skills | 9 starter skills | 5 deeper operator skills |
+| Memory templates | None | 5 (decision, source, approval, handoff, durable) |
+| Runbooks | None | 4 (startup, review, incident stop, weekly) |
+| Routing recipes | None | 3 + 4 worked examples |
 | License | MIT | Internal-use (one business) |
 | Delivery | Clone now | Email after Stripe payment |
 
