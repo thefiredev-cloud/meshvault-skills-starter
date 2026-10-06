@@ -1,3 +1,5 @@
+> **Moved.** The free skills now ship inside **[MeshVault Harness](https://github.com/thefiredev-cloud/meshvault-harness)**, a one-command installer for Hermes, OMP, a local model and these skills (plus two new ones). This repo stays up for existing links; new work happens there.
+
 # MeshVault Skills Starter
 
 [![validate skills](https://github.com/thefiredev-cloud/meshvault-skills-starter/actions/workflows/validate.yml/badge.svg)](https://github.com/thefiredev-cloud/meshvault-skills-starter/actions/workflows/validate.yml)
