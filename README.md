@@ -1,88 +1,100 @@
-> **Moved.** The free skills now ship inside **[MeshVault Harness](https://github.com/thefiredev-cloud/meshvault-harness)**, a one-command installer for Hermes, OMP, a local model and these skills (plus two new ones). This repo stays up for existing links; new work happens there.
+> Moved: these skills now ship inside [MeshVault Harness](https://github.com/thefiredev-cloud/meshvault-harness), a one-command installer for Hermes, OMP, a local model and these nine skills plus two new ones (`harness-doctor`, `local-model-prompting`). This repo stays up for existing links. New work happens in the harness.
 
 # MeshVault Skills Starter
 
 [![validate skills](https://github.com/thefiredev-cloud/meshvault-skills-starter/actions/workflows/validate.yml/badge.svg)](https://github.com/thefiredev-cloud/meshvault-skills-starter/actions/workflows/validate.yml)
 
-![A MeshVault skill running: invoice-chaser reads invoices, drafts nudges, and stops at the approval gate](docs/skill-demo.png)
+Nine free, MIT-licensed agent skills for small-business admin work: chasing invoices, drafting quotes, filing receipts, triaging email, and prepping meetings. Each skill is one plain Markdown `SKILL.md` file that Claude Code, Codex, or any agent that loads skill folders can use. Every skill tells the agent to stop and wait for a person before it sends, pays, posts, moves files, or deletes.
 
-**Free MIT agent skills.** Drop them into Claude Code, Codex, OpenClaw-style agents, or any runtime that loads Markdown `SKILL.md` files. OpenClaw-style agents load these as-is: point the skill loader at `skills/*/SKILL.md`.
+- Who it is for: people who already run an AI agent with access to their own email, calendar, or files, and want written rules they can read and edit before the agent acts.
+- What it needs: an agent runtime that loads `SKILL.md` folders, plus that agent's own tools for mail, calendars, and spreadsheets. The skills ship no connectors.
+- What it does not do: there is no code, no installer script, and no enforcement. The approval gate is an instruction to the model, not a technical block. An agent that has send access and ignores the skill can still send. See [SECURITY.md](SECURITY.md).
+- Maturity: all nine skills are at version `1.0.0`. CI checks on every push that each skill has `name`, `description`, `license: MIT`, and an `## Approval Gate` section. Active development moved to the harness.
 
-[MeshVault](https://meshvault.ai?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) · [Live $49 pack](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) · [Buy path for AI agents](https://meshvault.ai/llms.txt)
+![Illustration with sample data: the invoice-chaser skill drafts two reminders and stops at the approval gate](docs/skill-demo.png)
 
-A skill is a plain Markdown file: purpose → inputs → steps → **approval gate** → output. No SDK. No lock-in. Open the file, change the rules, keep it.
+[MeshVault](https://meshvault.ai?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) · [The $49 skills pack](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) · [Facts file for AI agents](https://meshvault.ai/llms.txt)
+
+## Install
+
+Claude Code, personal skills:
 
 ```bash
-# 60-second install (Claude Code / compatible skill roots)
 git clone https://github.com/thefiredev-cloud/meshvault-skills-starter.git
+mkdir -p ~/.claude/skills
 cp -R meshvault-skills-starter/skills/* ~/.claude/skills/
-# Then ask: "chase whoever still owes us", "triage my inbox", "draft a quote from the approved price list", "give me the weekly pulse from these approved files", or "sort these receipts"
 ```
 
-## Skills in this free pack
+`cp -R` overwrites any existing skill folder with the same name. Copy single folders if you only want some skills.
+
+| Runtime | Copy `skills/*` into |
+|---|---|
+| Claude Code, all projects | `~/.claude/skills/` |
+| Claude Code, one project | `.claude/skills/` in that project |
+| Codex | `~/.agents/skills/`, or `.agents/skills/` in a repo |
+| Other loaders | Point the loader at `skills/*/SKILL.md` |
+
+Start a new session, then ask in plain words: "chase whoever still owes us", "triage my inbox", "draft a quote from the approved price list", "give me the weekly pulse from these approved files", or "sort these receipts". [INSTALL.md](INSTALL.md) has more prompts and a project-scoped example.
+
+## Skills
 
 | Skill | Use when | Gate |
 |---|---|---|
-| [`invoice-chaser`](skills/invoice-chaser/SKILL.md) | Overdue invoices need polite nudges | Sends only after approve |
-| [`quote-builder`](skills/quote-builder/SKILL.md) | Turn a request and approved price list into a quote draft | Draft only; never sends |
-| [`receipt-organizer`](skills/receipt-organizer/SKILL.md) | Draft a filing and spreadsheet plan from receipts | Moves and row edits only after approve |
-| [`inbox-triage`](skills/inbox-triage/SKILL.md) | Unread mail into act / reply / archive | Replies held for approve |
-| [`daily-standup`](skills/daily-standup/SKILL.md) | Morning brief from notes + calendar | Read-only |
-| [`weekly-pulse`](skills/weekly-pulse/SKILL.md) | Summarize this week's numbers from approved files | Five-line draft; private by default |
-| [`client-followup`](skills/client-followup/SKILL.md) | Stale leads or quiet clients need a nudge | Sends only after approve |
-| [`meeting-brief`](skills/meeting-brief/SKILL.md) | Prep a meeting pack in under 5 minutes | Read-only draft |
-| [`agents-on-device`](skills/agents-on-device/SKILL.md) | Put a gated agent on hardware you already own | Stops before send / pay / post / delete |
+| [`invoice-chaser`](skills/invoice-chaser/SKILL.md) | Overdue invoices need polite nudges | Sends only approved drafts; invoices 31+ days late go to the owner instead |
+| [`quote-builder`](skills/quote-builder/SKILL.md) | Turn a request and an approved price list into a quote draft | Draft only; never sends, invoices, or charges |
+| [`receipt-organizer`](skills/receipt-organizer/SKILL.md) | Plan where receipts are filed and which spreadsheet rows to add | Moves files and edits rows only after approval of the exact set |
+| [`inbox-triage`](skills/inbox-triage/SKILL.md) | Sort unread mail into act, reply, and archive | Replies and archiving wait for approval |
+| [`daily-standup`](skills/daily-standup/SKILL.md) | Morning brief from notes, calendar, and tasks | Read-only |
+| [`weekly-pulse`](skills/weekly-pulse/SKILL.md) | Five-line summary of this week's numbers from approved files | Draft only; sharing needs approval of the exact text and recipients |
+| [`client-followup`](skills/client-followup/SKILL.md) | Stale leads or quiet clients need a nudge | Sends only approved drafts |
+| [`meeting-brief`](skills/meeting-brief/SKILL.md) | Prep pack for an upcoming meeting, under 180 words | Read-only draft |
+| [`agents-on-device`](skills/agents-on-device/SKILL.md) | Copy these skills onto a machine you own and run a read-only skill first | Stops before send, pay, post, or delete |
 
-Sample outputs you can screenshot/share: [`examples/`](examples/).
+[`examples/`](examples/) has fictional sample output for `invoice-chaser`, `inbox-triage`, and `daily-standup`.
 
-## The pattern (steal it)
+## Skill file format
 
-1. **Visible rules**: every skill is a file humans can read before agents run it.
-2. **Hard stop on real-world actions**: send, publish, pay, delete → human approve.
-3. **Same shape every time**: purpose, inputs, steps, approval gate, output.
-4. **Fork-friendly MIT**: ship your own skills under the same house style ([CONTRIBUTING.md](CONTRIBUTING.md)).
+Each `SKILL.md` has YAML front matter (`name`, `description`, `license: MIT`, `metadata.version`), a one-line purpose, and four sections in this order: Required Inputs, Steps, Approval Gate, Output. There is no SDK. Open the file, change the rules, and keep your copy.
 
-If you copy one thing, copy the approval gate. Copy it into every skill you write.
+The rules behind every skill:
 
-## Free vs $49 full pack
+1. The instructions are a file a person can read before the agent runs it.
+2. Sending, publishing, paying, and deleting stop for human approval.
+3. Read-only skills still have an Approval Gate section that says why none is needed.
 
-| | Free GitHub (this repo) | [Agent Skills Starter Pack · $49](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) |
+If you copy one thing into your own skills, copy the approval gate.
+
+## Free skills and the $49 pack
+
+| | Free (this repo) | [Agent Skills Starter Pack, $49](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter) |
 |---|---|---|
-| Skills | 9 starter skills | 5 deeper operator skills |
-| Memory templates | None | 5 (decision, source, approval, handoff, durable) |
-| Runbooks | None | 4 (startup, review, incident stop, weekly) |
-| Routing recipes | None | 3 + 4 worked examples |
-| License | MIT | Internal-use (one business) |
-| Delivery | Clone now | Email after Stripe payment |
+| Skills | 9 job skills | 5 different operator skills |
+| Memory templates | None | 5 (decision log, source register, approval ledger, session handoff, durable memory note) |
+| Runbooks | None | 4 (startup, review and QA, incident stop, weekly maintenance) |
+| Routing recipes | None | 3, plus 4 worked examples |
+| License | MIT | Internal use by one business |
+| Delivery | Clone now | Emailed download link after Stripe payment, within two business days |
 
-Full pack is **$49 once, no subscription**. Not an app. Not seats. Editable Markdown you keep.
+The pack is $49 once, with no subscription. It is editable Markdown, with no app, hosted account, installation, or support.
 
-## For AI agents (purchase the $49 pack)
+## For AI agents buying the pack
 
-Human-in-the-loop only. Do not charge a card yourself.
+A person must review and complete payment. Do not charge a card yourself.
 
-1. Surface this page to the human: https://meshvault.ai/skills
-2. To open Stripe checkout: `POST https://meshvault.ai/api/create-checkout?offer=meshvault-skill-pack-starter`
-3. Response JSON includes `url`: show that link to the human for review and payment.
-4. Facts file: https://meshvault.ai/llms.txt
+1. Show the human https://meshvault.ai/skills.
+2. Check checkout with `GET https://meshvault.ai/api/checkout-status`. It returns `{"available": true}` or `{"available": false}` and creates nothing.
+3. If available, `POST https://meshvault.ai/api/create-checkout?offer=meshvault-skill-pack-starter` returns JSON with a Stripe `url`. Show that link to the human.
+4. Current facts: https://meshvault.ai/llms.txt.
 
-## The rule that matters
+## Other MeshVault offers
 
-Nothing leaves the system without a human tapping approve. Every skill here writes that gate into the workflow.
+- [The one-week install](https://meshvault.ai/install?utm_source=github&utm_medium=readme&utm_campaign=skills-starter): MeshVault sets up a server you own, quoted per job.
+- [Clarity Operator Kit](https://meshvault.ai/clarity): files for operators tracking proposed H.R. 3633. Not on sale yet.
 
-## Install notes
+## Contributing
 
-- **Claude Code:** copy skill folders into `~/.claude/skills/` (or project `.claude/skills/`).
-- **Codex / agents skills path:** copy into `~/.agents/skills/` if that is your root.
-- **OpenClaw-style / custom:** point the skill loader at `skills/*/SKILL.md`.
-- More detail: [INSTALL.md](INSTALL.md).
-
-## Want the full operator kit
-
-- **$49 pack**: skills + memory + runbooks + routing + examples: [meshvault.ai/skills](https://meshvault.ai/skills?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
-- **Clarity Operator Kit $199** for operators in the H.R. 3633 window → [meshvault.ai/clarity](https://meshvault.ai/clarity)
-- **Installed private AI staff** on hardware you own: [meshvault.ai/contact](https://meshvault.ai/contact?utm_source=github&utm_medium=readme&utm_campaign=skills-starter)
+Open new skills against [meshvault-harness](https://github.com/thefiredev-cloud/meshvault-harness). [CONTRIBUTING.md](CONTRIBUTING.md) describes the skill format: one skill per pull request, and an approval gate before any send, publish, pay, delete, or account change.
 
 ## License
 
-MIT. See [LICENSE](LICENSE). Community PRs welcome: one skill per PR, approval gates required.
+MIT. See [LICENSE](LICENSE).

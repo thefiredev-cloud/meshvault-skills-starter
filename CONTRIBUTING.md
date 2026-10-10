@@ -1,10 +1,10 @@
 # Contributing
 
-Community skills are welcome. Keep them in the house style:
+Community skills are welcome. New skills go to [meshvault-harness](https://github.com/thefiredev-cloud/meshvault-harness), where new work happens. Keep them in the house style:
 
 1. One folder under `skills/`, one `SKILL.md` inside it.
-2. Frontmatter: `name`, `description` (write it as "This skill should be used when the user asks..."), `license: MIT`, and a version.
-3. Body sections in this order: purpose line, **Required Inputs**, **Steps**, **Approval Gate**, **Output**.
+2. Frontmatter: `name` (matching the folder name), `description` (write it as "This skill should be used when the user asks..."), `license: MIT`, and `metadata.version`.
+3. Body sections in this order: purpose line, `## Required Inputs`, `## Steps`, `## Approval Gate`, `## Output`. CI fails a skill without `name:`, `description:`, `license: MIT`, or an `## Approval Gate` heading.
 4. Any step that sends, publishes, pays, deletes, or changes account state must stop at the approval gate. Skills that act without a gate will not be merged.
 5. Plain language. If a 12 year old cannot follow the steps, simplify them.
 6. No credentials, no client data, no personal information in examples.
