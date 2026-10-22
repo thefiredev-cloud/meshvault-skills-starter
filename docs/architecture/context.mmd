@@ -1,0 +1,15 @@
+flowchart LR
+  user(["Person running an AI agent"]):::actor
+  author(["Skill contributor"]):::actor
+  SYSTEM["MeshVault Skills Starter<br/>the system in this repo"]:::app
+  agent{{"Agent runtime (Claude Code, Codex, ...)"}}:::ext
+  harness{{"meshvault-harness (successor)"}}:::ext
+  user -->|"cp -R skills/*"| SYSTEM
+  agent -->|"loads at session start"| SYSTEM
+  user -->|"asks in plain words"| agent
+  agent -.->|"draft, then waits for approval"| user
+  author -->|"PR (now to harness)"| SYSTEM
+  harness -.->|"successor ships them"| SYSTEM
+  classDef actor fill:#fde68a,stroke:#b45309,color:#111827
+  classDef app fill:#bfdbfe,stroke:#1d4ed8,color:#0b1220
+  classDef ext fill:#e5e7eb,stroke:#4b5563,color:#0b1220,stroke-dasharray:4 3

@@ -1,0 +1,12 @@
+flowchart LR
+  skillsdir[("Agent skills folder")]:::store
+  agent{{"Agent runtime (Claude Code, Codex, ...)"}}:::ext
+  skills["9 SKILL.md files"]:::doc
+  user(["Person running an AI agent"]):::actor
+  user -->|"cp -R skills/*"| skillsdir
+  skills -->|"copied"| skillsdir
+  agent -->|"loads at session start"| skillsdir
+  classDef actor fill:#fde68a,stroke:#b45309,color:#111827
+  classDef doc fill:#fed7aa,stroke:#c2410c,color:#0b1220
+  classDef ext fill:#e5e7eb,stroke:#4b5563,color:#0b1220,stroke-dasharray:4 3
+  classDef store fill:#bbf7d0,stroke:#15803d,color:#0b1220

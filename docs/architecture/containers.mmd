@@ -1,0 +1,25 @@
+flowchart LR
+  user(["Person running an AI agent"]):::actor
+  author(["Skill contributor"]):::actor
+  agent{{"Agent runtime (Claude Code, Codex, ...)"}}:::ext
+  harness{{"meshvault-harness (successor)"}}:::ext
+  subgraph SYSTEM["MeshVault Skills Starter"]
+    skills["9 SKILL.md files<br/>Markdown + YAML front matter"]:::doc
+    examples["Sample outputs<br/>Markdown (fictional)"]:::doc
+    ci["validate skills<br/>GitHub Actions + grep"]:::job
+    skillsdir[("Agent skills folder<br/>~/.claude/skills, ~/.agents/skills")]:::store
+  end
+  user -->|"cp -R skills/*"| skillsdir
+  skills -->|"copied"| skillsdir
+  agent -->|"loads at session start"| skillsdir
+  user -->|"asks in plain words"| agent
+  agent -.->|"draft, then waits for approval"| user
+  author -->|"PR (now to harness)"| skills
+  ci -->|"checks format"| skills
+  skills -->|"sample output"| examples
+  harness -.->|"successor ships them"| skills
+  classDef actor fill:#fde68a,stroke:#b45309,color:#111827
+  classDef doc fill:#fed7aa,stroke:#c2410c,color:#0b1220
+  classDef ext fill:#e5e7eb,stroke:#4b5563,color:#0b1220,stroke-dasharray:4 3
+  classDef job fill:#fbcfe8,stroke:#be185d,color:#0b1220
+  classDef store fill:#bbf7d0,stroke:#15803d,color:#0b1220

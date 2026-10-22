@@ -91,6 +91,33 @@ A person must review and complete payment. Do not charge a card yourself.
 - [The one-week install](https://meshvault.ai/install?utm_source=github&utm_medium=readme&utm_campaign=skills-starter): MeshVault sets up a server you own, quoted per job.
 - [Clarity Operator Kit](https://meshvault.ai/clarity): files for operators tracking proposed H.R. 3633. Not on sale yet.
 
+<!-- arch:begin -->
+## Architecture
+
+Nine plain-Markdown agent skills for small-business admin work, each with a written approval gate. Moved into MeshVault Harness.
+
+```mermaid
+flowchart LR
+  user(["Person"]):::actor
+  skills["9 skills<br/>SKILL.md files"]:::doc
+  dir[("Skills folder<br/>in the agent's home")]:::store
+  agent{{"Agent runtime<br/>Claude Code, Codex"}}:::ext
+  ci["Format check<br/>GitHub Actions"]:::job
+  skills -->|"copied"| dir
+  dir -->|"loaded"| agent
+  user -->|"asks"| agent
+  agent -.->|"draft, waits"| user
+  ci -->|"validates"| skills
+  classDef actor fill:#fde68a,stroke:#b45309,color:#111827
+  classDef doc fill:#fed7aa,stroke:#c2410c,color:#0b1220
+  classDef ext fill:#e5e7eb,stroke:#4b5563,color:#0b1220,stroke-dasharray:4 3
+  classDef job fill:#fbcfe8,stroke:#be185d,color:#0b1220
+  classDef store fill:#bbf7d0,stroke:#15803d,color:#0b1220
+```
+
+[Full architecture](docs/ARCHITECTURE.md) · Hi-res: [SVG](docs/architecture/whiteboard.svg) · [PNG 3x](docs/architecture/whiteboard@3x.png) · [dark PNG](docs/architecture/whiteboard.dark@3x.png) · [Explorable (Archify)](docs/architecture/meshvault-skills-starter.archify.html) · [Graphify report](docs/architecture/graphify/GRAPH_REPORT.md)
+<!-- arch:end -->
+
 ## Contributing
 
 Open new skills against [meshvault-harness](https://github.com/thefiredev-cloud/meshvault-harness). [CONTRIBUTING.md](CONTRIBUTING.md) describes the skill format: one skill per pull request, and an approval gate before any send, publish, pay, delete, or account change.
