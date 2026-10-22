@@ -1,0 +1,12 @@
+sequenceDiagram
+  autonumber
+  actor user as Person
+  participant agent as Agent runtime
+  participant skill as invoice-chaser SKILL.md
+  user->>agent: chase whoever still owes us
+  agent->>skill: load skill by description
+  skill-->>agent: inputs, steps, approval gate
+  agent-->>user: draft reminders (nothing sent)
+  user->>agent: approve exact drafts
+  Note over agent: Invoices 31+ days late go to the owner instead
+  agent-->>user: sent drafts and result

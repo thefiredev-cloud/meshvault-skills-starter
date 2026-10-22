@@ -1,0 +1,16 @@
+flowchart LR
+  user(["Person"]):::actor
+  skills["9 skills<br/>SKILL.md files"]:::doc
+  dir[("Skills folder<br/>in the agent's home")]:::store
+  agent{{"Agent runtime<br/>Claude Code, Codex"}}:::ext
+  ci["Format check<br/>GitHub Actions"]:::job
+  skills -->|"copied"| dir
+  dir -->|"loaded"| agent
+  user -->|"asks"| agent
+  agent -.->|"draft, waits"| user
+  ci -->|"validates"| skills
+  classDef actor fill:#fde68a,stroke:#b45309,color:#111827
+  classDef doc fill:#fed7aa,stroke:#c2410c,color:#0b1220
+  classDef ext fill:#e5e7eb,stroke:#4b5563,color:#0b1220,stroke-dasharray:4 3
+  classDef job fill:#fbcfe8,stroke:#be185d,color:#0b1220
+  classDef store fill:#bbf7d0,stroke:#15803d,color:#0b1220

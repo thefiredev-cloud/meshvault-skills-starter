@@ -1,0 +1,61 @@
+{
+ "repo": "meshvault-skills-starter",
+ "files_tracked": 23,
+ "head": "bb622e7e0e650526dfed1b795e69591e1aafd98c",
+ "origin": "https://github.com/thefiredev-cloud/meshvault-skills-starter.git",
+ "default_branch": "main",
+ "languages": [
+  [
+   ".md",
+   20
+  ],
+  [
+   ".yml",
+   1
+  ],
+  [
+   ".png",
+   1
+  ]
+ ],
+ "readme": "README.md",
+ "readme_first_paragraph": "Nine free, MIT-licensed agent skills for small-business admin work: chasing invoices, drafting quotes, filing receipts, triaging email, and prepping meetings. Each skill is one plain Markdown `SKILL.md` file that Claude Code, Codex, or any agent that loads skill folders can use. Every skill tells the agent to stop and wait for a person before it sends, pays, posts, moves files, or deletes.",
+ "top_dirs": [
+  ".github",
+  "docs",
+  "examples",
+  "skills"
+ ],
+ "manifests": [],
+ "libs": [],
+ "entry_points": [],
+ "services": [],
+ "deploy_targets": [],
+ "ci_workflows": [
+  {
+   "path": ".github/workflows/validate.yml",
+   "name": "validate skills",
+   "on": [
+    "push",
+    "pull_request"
+   ],
+   "jobs": [
+    "validate"
+   ],
+   "deploy_hints": []
+  }
+ ],
+ "cron_and_timers": [],
+ "files_scanned": 1,
+ "external_hosts": [],
+ "env_var_names": [],
+ "ci_secret_names": [],
+ "data_store_signals": {},
+ "auth_signals": {
+  "Approval/consent gate": [
+   ".github/workflows/validate.yml:14"
+  ]
+ },
+ "tests": [],
+ "docs_files": []
+}
